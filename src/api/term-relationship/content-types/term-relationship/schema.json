@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "term_relationships",
+  "info": {
+    "singularName": "term-relationship",
+    "pluralName": "term-relationships",
+    "displayName": "TermRelationship",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "objectId": {
+      "type": "dynamiczone",
+      "components": [
+        "belong.plan",
+        "belong.execution",
+        "belong.comment"
+      ]
+    },
+    "taxonomy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::taxonomy.taxonomy",
+      "inversedBy": "term_relationships"
+    }
+  }
+}

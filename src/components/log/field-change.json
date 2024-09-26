@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_log_field_changes",
+  "info": {
+    "displayName": "FieldChange"
+  },
+  "options": {},
+  "attributes": {
+    "fieldName": {
+      "type": "string",
+      "required": true
+    },
+    "from": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    }
+  }
+}

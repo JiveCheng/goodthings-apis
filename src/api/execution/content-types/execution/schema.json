@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "executions",
+  "info": {
+    "singularName": "execution",
+    "pluralName": "executions",
+    "displayName": "Execution",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "plan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::plan.plan"
+    },
+    "execution_accumulators": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::execution-accumulator.execution-accumulator",
+      "mappedBy": "execution"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "accumulating",
+        "pending",
+        "processing",
+        "done",
+        "suspend",
+        "cancelled"
+      ],
+      "required": true
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.plan",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "conditions_mets",
+  "info": {
+    "singularName": "conditions-met",
+    "pluralName": "conditions-mets",
+    "displayName": "ConditionsMet"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::plan.plan",
+      "inversedBy": "conditions_mets"
+    },
+    "productId": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "acc_amount",
+        "orders_count",
+        "purchase_qty"
+      ],
+      "required": true
+    },
+    "value": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_meta_plans",
+  "info": {
+    "displayName": "Plan/Execution",
+    "icon": "bulletList",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "executiveUserId": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "recipient": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "start": {
+      "type": "datetime",
+      "required": true
+    },
+    "items": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "durationUnit": {
+      "type": "enumeration",
+      "enum": [
+        "minutes",
+        "hours",
+        "days"
+      ],
+      "required": false
+    }
+  }
+}

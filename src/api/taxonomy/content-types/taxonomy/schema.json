@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "taxonomies",
+  "info": {
+    "singularName": "taxonomy",
+    "pluralName": "taxonomies",
+    "displayName": "Taxonomy",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "term": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::term.term"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "parent": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "term_relationships": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::term-relationship.term-relationship",
+      "mappedBy": "taxonomy"
+    }
+  }
+}

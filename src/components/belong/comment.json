@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_belong_comments",
+  "info": {
+    "displayName": "Comment",
+    "icon": ""
+  },
+  "options": {},
+  "attributes": {
+    "comment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comment.comment"
+    }
+  }
+}

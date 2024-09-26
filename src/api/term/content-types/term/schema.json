@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "terms",
+  "info": {
+    "singularName": "term",
+    "pluralName": "terms",
+    "displayName": "Term"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    }
+  }
+}

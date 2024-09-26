@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "plans",
+  "info": {
+    "singularName": "plan",
+    "pluralName": "plans",
+    "displayName": "Plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "ownerId": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "content": {
+      "type": "blocks",
+      "required": true
+    },
+    "maxTrigger": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.plan"
+    },
+    "conditions_mets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::conditions-met.conditions-met",
+      "mappedBy": "plan"
+    },
+    "excerpt": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

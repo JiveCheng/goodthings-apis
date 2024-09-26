@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_belong_plans",
+  "info": {
+    "displayName": "Plan"
+  },
+  "options": {},
+  "attributes": {
+    "plan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::plan.plan"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_belong_executions",
+  "info": {
+    "displayName": "Execution",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "execution": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::execution.execution"
+    }
+  }
+}

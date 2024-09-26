@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "execution_accumulators",
+  "info": {
+    "singularName": "execution-accumulator",
+    "pluralName": "execution-accumulators",
+    "displayName": "ExecutionAccumulator"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "plan": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::plan.plan"
+    },
+    "orderId": {
+      "type": "integer",
+      "required": true
+    },
+    "execution": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::execution.execution",
+      "inversedBy": "execution_accumulators"
+    }
+  }
+}
