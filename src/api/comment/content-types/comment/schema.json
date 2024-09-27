@@ -17,7 +17,8 @@
       "components": [
         "belong.plan",
         "belong.execution"
-      ]
+      ],
+      "required": true
     },
     "userId": {
       "type": "integer",

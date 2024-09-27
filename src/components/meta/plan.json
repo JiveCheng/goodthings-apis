@@ -18,16 +18,16 @@
     },
     "location": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "start": {
       "type": "datetime",
-      "required": true
+      "required": false
     },
     "items": {
       "type": "media",
       "multiple": true,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",

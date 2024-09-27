@@ -18,7 +18,8 @@
         "belong.plan",
         "belong.execution",
         "belong.comment"
-      ]
+      ],
+      "required": true
     },
     "taxonomy": {
       "type": "relation",

@@ -497,7 +497,10 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    objectId: Schema.Attribute.DynamicZone<['belong.plan', 'belong.execution']>;
+    objectId: Schema.Attribute.DynamicZone<
+      ['belong.plan', 'belong.execution']
+    > &
+      Schema.Attribute.Required;
     userId: Schema.Attribute.Integer & Schema.Attribute.Required;
     content: Schema.Attribute.RichText;
     Log: Schema.Attribute.Component<'log.field-change', true>;
@@ -742,7 +745,8 @@ export interface ApiTermRelationshipTermRelationship
   attributes: {
     objectId: Schema.Attribute.DynamicZone<
       ['belong.plan', 'belong.execution', 'belong.comment']
-    >;
+    > &
+      Schema.Attribute.Required;
     taxonomy: Schema.Attribute.Relation<'manyToOne', 'api::taxonomy.taxonomy'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

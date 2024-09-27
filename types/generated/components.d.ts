@@ -12,13 +12,12 @@ export interface MetaPlan extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<0>;
     recipient: Schema.Attribute.String & Schema.Attribute.Required;
-    location: Schema.Attribute.String & Schema.Attribute.Required;
-    start: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    location: Schema.Attribute.String;
+    start: Schema.Attribute.DateTime;
     items: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
-    > &
-      Schema.Attribute.Required;
+    >;
     duration: Schema.Attribute.Integer;
     durationUnit: Schema.Attribute.Enumeration<['minutes', 'hours', 'days']>;
   };
