@@ -711,13 +711,19 @@ export interface ApiTermTerm extends Struct.CollectionTypeSchema {
     singularName: 'term';
     pluralName: 'terms';
     displayName: 'Term';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     slug: Schema.Attribute.UID<'name'>;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

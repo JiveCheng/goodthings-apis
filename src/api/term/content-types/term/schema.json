@@ -4,7 +4,8 @@
   "info": {
     "singularName": "term",
     "pluralName": "terms",
-    "displayName": "Term"
+    "displayName": "Term",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,11 +14,17 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }
