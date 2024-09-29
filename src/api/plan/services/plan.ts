@@ -4,4 +4,33 @@
 
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreService('api::plan.plan');
+export default factories.createCoreService('api::plan.plan', ({ strapi }) => ({
+    async find(...args) {
+        // Calling the default core controller
+        const { results, pagination } = await super.find(...args);
+        const documentIds = results.map((row) => row.documentId);
+        const termRelationships = await strapi.documents('api::term-relationship.term-relationship').findMany({
+            filters: {
+                objectId: documentIds,
+            },
+            populate: {
+                taxonomy: {
+                    populate: ['term']
+                }
+            },
+        });
+        const output = await Promise.all(results.map(async (row) => {
+            const { documentId } = row;
+            const termRelationship = termRelationships.find((termRelationship) => termRelationship.objectId === documentId);
+            return {
+                ...row,
+                type: termRelationship?.taxonomy?.term?.label || '',
+                trigger_count: 0,
+                execution_count: 0,
+            };
+        }))
+        return {
+            results: output, pagination
+        };
+    },
+}));

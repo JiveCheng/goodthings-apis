@@ -12,20 +12,23 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "objectId": {
-      "type": "dynamiczone",
-      "components": [
-        "belong.plan",
-        "belong.execution",
-        "belong.comment"
-      ],
-      "required": true
-    },
     "taxonomy": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::taxonomy.taxonomy",
       "inversedBy": "term_relationships"
+    },
+    "objectType": {
+      "type": "enumeration",
+      "enum": [
+        "plan",
+        "execution",
+        "comment"
+      ]
+    },
+    "objectId": {
+      "type": "string",
+      "required": true
     }
   }
 }
