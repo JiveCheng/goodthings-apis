@@ -15,7 +15,8 @@
     "term": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::term.term"
+      "target": "api::term.term",
+      "inversedBy": "taxonomy"
     },
     "name": {
       "type": "string",

@@ -724,6 +724,7 @@ export interface ApiTermTerm extends Struct.CollectionTypeSchema {
     label: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    taxonomy: Schema.Attribute.Relation<'oneToOne', 'api::taxonomy.taxonomy'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -749,11 +750,9 @@ export interface ApiTermRelationshipTermRelationship
     draftAndPublish: false;
   };
   attributes: {
-    objectId: Schema.Attribute.DynamicZone<
-      ['belong.plan', 'belong.execution', 'belong.comment']
-    > &
-      Schema.Attribute.Required;
     taxonomy: Schema.Attribute.Relation<'manyToOne', 'api::taxonomy.taxonomy'>;
+    objectType: Schema.Attribute.Enumeration<['plan', 'execution', 'comment']>;
+    objectId: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
