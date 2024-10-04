@@ -12,14 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "objectId": {
-      "type": "dynamiczone",
-      "components": [
-        "belong.plan",
-        "belong.execution"
-      ],
-      "required": true
-    },
     "userId": {
       "type": "integer",
       "required": true
@@ -31,6 +23,18 @@
       "type": "component",
       "repeatable": true,
       "component": "log.field-change"
+    },
+    "objectType": {
+      "type": "enumeration",
+      "enum": [
+        "plan",
+        "execution"
+      ],
+      "required": true
+    },
+    "objectId": {
+      "type": "string",
+      "required": true
     }
   }
 }

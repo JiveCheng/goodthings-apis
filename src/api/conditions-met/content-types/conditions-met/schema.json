@@ -4,7 +4,8 @@
   "info": {
     "singularName": "conditions-met",
     "pluralName": "conditions-mets",
-    "displayName": "ConditionsMet"
+    "displayName": "ConditionsMet",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -23,6 +24,7 @@
     "type": {
       "type": "enumeration",
       "enum": [
+        "closed",
         "acc_amount",
         "orders_count",
         "purchase_qty"
