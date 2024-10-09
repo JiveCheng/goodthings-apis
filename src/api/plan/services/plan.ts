@@ -53,5 +53,19 @@ export default factories.createCoreService('api::plan.plan', ({ strapi }) => ({
             trigger_count: 0,
             execution_count: 0,
         };
+    },
+    async create(params) {
+        // some logic here
+        const result = await super.create(params);
+        // some more logic
+
+        return result;
+    },
+    async update(documentId, params) {
+        // some logic here
+        const result = await super.update(documentId, params);
+        // some more logic
+
+        return result;
     }
 }));

@@ -583,6 +583,7 @@ export interface ApiExecutionExecution extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     metadata: Schema.Attribute.Component<'meta.plan', false> &
       Schema.Attribute.Required;
+    userId: Schema.Attribute.Integer & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

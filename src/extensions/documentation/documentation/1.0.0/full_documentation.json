@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-03T02:00:22.922Z"
+    "x-generation-date": "2024-10-09T06:06:19.673Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -6601,7 +6601,8 @@
           "data": {
             "required": [
               "state",
-              "metadata"
+              "metadata",
+              "userId"
             ],
             "type": "object",
             "properties": {
@@ -6643,6 +6644,9 @@
               },
               "metadata": {
                 "$ref": "#/components/schemas/MetaPlanComponent"
+              },
+              "userId": {
+                "type": "integer"
               },
               "locale": {
                 "type": "string"
@@ -6704,7 +6708,8 @@
         "type": "object",
         "required": [
           "state",
-          "metadata"
+          "metadata",
+          "userId"
         ],
         "properties": {
           "id": {
@@ -6955,6 +6960,9 @@
                     "metadata": {
                       "$ref": "#/components/schemas/MetaPlanComponent"
                     },
+                    "userId": {
+                      "type": "integer"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -7075,6 +7083,9 @@
           },
           "metadata": {
             "$ref": "#/components/schemas/MetaPlanComponent"
+          },
+          "userId": {
+            "type": "integer"
           },
           "createdAt": {
             "type": "string",
@@ -7540,6 +7551,9 @@
               },
               "metadata": {
                 "$ref": "#/components/schemas/MetaPlanComponent"
+              },
+              "userId": {
+                "type": "integer"
               },
               "createdAt": {
                 "type": "string",
