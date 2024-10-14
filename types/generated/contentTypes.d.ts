@@ -55,6 +55,7 @@ export interface PluginUploadFile extends Struct.CollectionTypeSchema {
       'oneToMany',
       'plugin::upload.file'
     >;
+    filemeta: Schema.Attribute.JSON;
   };
 }
 

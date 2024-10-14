@@ -25,4 +25,8 @@ module.exports = ({ env }) => ({
             },
         },
     },
+    filemeta: {
+        enabled: true,
+        resolve: './src/plugins/filemeta'
+    },
 });
