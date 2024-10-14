@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
             provider: 'aws-s3',
             providerOptions: {
                 baseUrl: env('CDN_URL', `https://${env('AWS_BUCKET')}.s3.${env('AWS_REGION')}.amazonaws.com`),
-                rootPath: env('CDN_ROOT_PATH', 'develop'),
+                rootPath: env('CDN_ROOT_PATH', 'staging'),
                 s3Options: {
                     credentials: {
                         accessKeyId: env('AWS_ACCESS_KEY_ID'),

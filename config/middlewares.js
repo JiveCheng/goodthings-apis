@@ -7,19 +7,21 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https:'],
+          'connect-src': ["'self'", 'http:', 'https:'],
           'img-src': [
             "'self'",
             'data:',
             'blob:',
-            'dl.airtable.com',
+            'strapi.io',
+            'market-assets.strapi.io',
             'goodthings-apis-uploads.s3.ap-northeast-1.amazonaws.com',
           ],
           'media-src': [
             "'self'",
             'data:',
             'blob:',
-            'dl.airtable.com',
+            'strapi.io',
+            'market-assets.strapi.io',
             'goodthings-apis-uploads.s3.ap-northeast-1.amazonaws.com',
           ],
           upgradeInsecureRequests: null,
@@ -27,8 +29,12 @@ module.exports = [
       },
     },
   },
-  'strapi::security',
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: ['http://localhost:1337', 'http://43.207.211.114:1337']
+    }
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',

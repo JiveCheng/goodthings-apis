@@ -497,13 +497,12 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    objectId: Schema.Attribute.DynamicZone<
-      ['belong.plan', 'belong.execution']
-    > &
-      Schema.Attribute.Required;
     userId: Schema.Attribute.Integer & Schema.Attribute.Required;
     content: Schema.Attribute.RichText;
     Log: Schema.Attribute.Component<'log.field-change', true>;
+    objectType: Schema.Attribute.Enumeration<['plan', 'execution']> &
+      Schema.Attribute.Required;
+    objectId: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -526,6 +525,7 @@ export interface ApiConditionsMetConditionsMet
     singularName: 'conditions-met';
     pluralName: 'conditions-mets';
     displayName: 'ConditionsMet';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -534,7 +534,7 @@ export interface ApiConditionsMetConditionsMet
     plan: Schema.Attribute.Relation<'manyToOne', 'api::plan.plan'>;
     productId: Schema.Attribute.Integer;
     type: Schema.Attribute.Enumeration<
-      ['acc_amount', 'orders_count', 'purchase_qty']
+      ['closed', 'acc_amount', 'orders_count', 'purchase_qty']
     > &
       Schema.Attribute.Required;
     value: Schema.Attribute.Integer &
@@ -583,6 +583,7 @@ export interface ApiExecutionExecution extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required;
     metadata: Schema.Attribute.Component<'meta.plan', false> &
       Schema.Attribute.Required;
+    userId: Schema.Attribute.Integer & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

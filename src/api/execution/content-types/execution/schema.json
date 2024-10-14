@@ -40,6 +40,10 @@
       "repeatable": false,
       "component": "meta.plan",
       "required": true
+    },
+    "userId": {
+      "type": "integer",
+      "required": true
     }
   }
 }

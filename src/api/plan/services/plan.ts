@@ -33,4 +33,36 @@ export default factories.createCoreService('api::plan.plan', ({ strapi }) => ({
             results: output, pagination
         };
     },
+    async findOne(...args) {
+        const document = await super.findOne(...args);
+        const { documentId } = document;
+        const termRelationships = await strapi.documents('api::term-relationship.term-relationship').findMany({
+            filters: {
+                objectId: documentId,
+            },
+            populate: {
+                taxonomy: {
+                    populate: ['term']
+                }
+            },
+        });
+        const termRelationship = termRelationships.find((termRelationship) => termRelationship.objectId === documentId);
+        return {
+            ...document,
+            type: termRelationship?.taxonomy?.term?.label || '',
+            trigger_count: 0,
+            execution_count: 0,
+        };
+    },
+    async create(params) {
+        // some logic here
+        const result = await super.create(params);
+        // some more logic
+
+        return result;
+    },
+    async update(documentId, params) {
+        const result = await super.update(documentId, params);
+        return result;
+    }
 }));
