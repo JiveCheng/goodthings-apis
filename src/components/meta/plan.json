@@ -46,6 +46,9 @@
         "days"
       ],
       "required": false
+    },
+    "content": {
+      "type": "json"
     }
   }
 }

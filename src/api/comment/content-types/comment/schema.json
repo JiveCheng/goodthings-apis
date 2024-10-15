@@ -16,9 +16,6 @@
       "type": "integer",
       "required": true
     },
-    "content": {
-      "type": "richtext"
-    },
     "Log": {
       "type": "component",
       "repeatable": true,
@@ -35,6 +32,9 @@
     "objectId": {
       "type": "string",
       "required": true
+    },
+    "content": {
+      "type": "json"
     }
   }
 }

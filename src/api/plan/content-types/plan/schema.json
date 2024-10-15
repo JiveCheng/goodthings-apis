@@ -21,10 +21,6 @@
       "required": true,
       "default": 0
     },
-    "content": {
-      "type": "blocks",
-      "required": true
-    },
     "maxTrigger": {
       "type": "integer",
       "default": 0,
@@ -43,6 +39,10 @@
     },
     "excerpt": {
       "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "json",
       "required": true
     }
   }

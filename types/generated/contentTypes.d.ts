@@ -499,11 +499,11 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   };
   attributes: {
     userId: Schema.Attribute.Integer & Schema.Attribute.Required;
-    content: Schema.Attribute.RichText;
     Log: Schema.Attribute.Component<'log.field-change', true>;
     objectType: Schema.Attribute.Enumeration<['plan', 'execution']> &
       Schema.Attribute.Required;
     objectId: Schema.Attribute.String & Schema.Attribute.Required;
+    content: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -649,7 +649,6 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
     ownerId: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<0>;
-    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     maxTrigger: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<0>;
@@ -659,6 +658,7 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
       'api::conditions-met.conditions-met'
     >;
     excerpt: Schema.Attribute.String & Schema.Attribute.Required;
+    content: Schema.Attribute.JSON & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
