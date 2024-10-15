@@ -4,13 +4,6 @@
   "type": "commonjs",
   "exports": {
     "./package.json": "./package.json",
-    "./strapi-admin": {
-      "types": "./dist/admin/src/index.d.ts",
-      "source": "./admin/src/index.ts",
-      "import": "./dist/admin/index.mjs",
-      "require": "./dist/admin/index.js",
-      "default": "./dist/admin/index.js"
-    },
     "./strapi-server": {
       "types": "./dist/server/src/index.d.ts",
       "source": "./server/src/index.ts",
@@ -27,43 +20,28 @@
     "watch": "strapi-plugin watch",
     "watch:link": "strapi-plugin watch:link",
     "verify": "strapi-plugin verify",
-    "test:ts:front": "run -T tsc -p admin/tsconfig.json",
     "test:ts:back": "run -T tsc -p server/tsconfig.json"
   },
-  "dependencies": {
-    "@strapi/design-system": "^2.0.0-rc.11",
-    "@strapi/icons": "^2.0.0-rc.11",
-    "react-intl": "^6.7.2"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@strapi/strapi": "^5.0.5",
+    "@strapi/strapi": "^5.0.6",
     "@strapi/sdk-plugin": "^5.2.7",
     "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2",
-    "styled-components": "^6.1.13",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
-    "@strapi/typescript-utils": "^5.0.5",
+    "@strapi/typescript-utils": "^5.0.6",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^5.0.5",
-    "@strapi/sdk-plugin": "^5.2.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2",
-    "styled-components": "^6.1.13"
+    "@strapi/strapi": "^5.0.6",
+    "@strapi/sdk-plugin": "^5.2.7"
   },
   "strapi": {
     "kind": "plugin",
     "name": "filemeta",
-    "displayName": "FileMeta",
+    "displayName": "FileMetaData",
     "description": ""
   },
   "name": "filemeta",
   "description": "",
   "license": "MIT",
-  "author": "JiveChengTXI <jive.cheng@txipartners.com>"
+  "author": "JiveCheng <zhesheng.zheng@gmail.com>"
 }

@@ -30,7 +30,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::taxonomy.taxonomy",
-      "inversedBy": "term"
+      "mappedBy": "term"
     }
   }
 }
