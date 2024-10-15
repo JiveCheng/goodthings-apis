@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-15T06:53:12.948Z"
+    "x-generation-date": "2024-10-15T10:59:39.857Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -5555,9 +5555,6 @@
               "userId": {
                 "type": "integer"
               },
-              "content": {
-                "type": "string"
-              },
               "Log": {
                 "type": "array",
                 "items": {
@@ -5574,6 +5571,7 @@
               "objectId": {
                 "type": "string"
               },
+              "content": {},
               "locale": {
                 "type": "string"
               },
@@ -5647,9 +5645,6 @@
           "userId": {
             "type": "integer"
           },
-          "content": {
-            "type": "string"
-          },
           "Log": {
             "type": "array",
             "items": {
@@ -5666,6 +5661,7 @@
           "objectId": {
             "type": "string"
           },
+          "content": {},
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -5969,9 +5965,6 @@
                 "userId": {
                   "type": "integer"
                 },
-                "content": {
-                  "type": "string"
-                },
                 "Log": {
                   "type": "array",
                   "items": {
@@ -5988,6 +5981,7 @@
                 "objectId": {
                   "type": "string"
                 },
+                "content": {},
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -6195,7 +6189,6 @@
               "ownerId": {
                 "type": "integer"
               },
-              "content": {},
               "maxTrigger": {
                 "type": "integer"
               },
@@ -6296,6 +6289,7 @@
               "excerpt": {
                 "type": "string"
               },
+              "content": {},
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -6590,7 +6584,8 @@
               "hours",
               "days"
             ]
-          }
+          },
+          "content": {}
         }
       },
       "ExecutionRequest": {
@@ -6734,7 +6729,6 @@
               "ownerId": {
                 "type": "integer"
               },
-              "content": {},
               "maxTrigger": {
                 "type": "integer"
               },
@@ -6835,6 +6829,7 @@
               "excerpt": {
                 "type": "string"
               },
+              "content": {},
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -7272,7 +7267,6 @@
               "ownerId": {
                 "type": "integer"
               },
-              "content": {},
               "maxTrigger": {
                 "type": "integer"
               },
@@ -7373,6 +7367,7 @@
               "excerpt": {
                 "type": "string"
               },
+              "content": {},
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -7683,9 +7678,9 @@
             "required": [
               "title",
               "ownerId",
-              "content",
               "maxTrigger",
-              "excerpt"
+              "excerpt",
+              "content"
             ],
             "type": "object",
             "properties": {
@@ -7695,7 +7690,6 @@
               "ownerId": {
                 "type": "integer"
               },
-              "content": {},
               "maxTrigger": {
                 "type": "integer"
               },
@@ -7719,6 +7713,7 @@
               "excerpt": {
                 "type": "string"
               },
+              "content": {},
               "locale": {
                 "type": "string"
               },
@@ -7780,9 +7775,9 @@
         "required": [
           "title",
           "ownerId",
-          "content",
           "maxTrigger",
-          "excerpt"
+          "excerpt",
+          "content"
         ],
         "properties": {
           "id": {
@@ -7797,7 +7792,6 @@
           "ownerId": {
             "type": "integer"
           },
-          "content": {},
           "maxTrigger": {
             "type": "integer"
           },
@@ -7830,7 +7824,6 @@
                     "ownerId": {
                       "type": "integer"
                     },
-                    "content": {},
                     "maxTrigger": {
                       "type": "integer"
                     },
@@ -7854,6 +7847,7 @@
                     "excerpt": {
                       "type": "string"
                     },
+                    "content": {},
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -7979,6 +7973,7 @@
           "excerpt": {
             "type": "string"
           },
+          "content": {},
           "createdAt": {
             "type": "string",
             "format": "date-time"

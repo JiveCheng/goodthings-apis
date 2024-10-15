@@ -20,6 +20,7 @@ export interface MetaPlan extends Struct.ComponentSchema {
     >;
     duration: Schema.Attribute.Integer;
     durationUnit: Schema.Attribute.Enumeration<['minutes', 'hours', 'days']>;
+    content: Schema.Attribute.JSON;
   };
 }
 
