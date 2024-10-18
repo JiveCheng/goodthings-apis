@@ -34,7 +34,7 @@
     "value": {
       "type": "integer",
       "required": true,
-      "min": 1
+      "min": 0
     }
   }
 }
