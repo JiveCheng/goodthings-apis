@@ -542,7 +542,7 @@ export interface ApiConditionsMetConditionsMet
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
-          min: 1;
+          min: 0;
         },
         number
       >;
