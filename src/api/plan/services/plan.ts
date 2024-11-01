@@ -55,10 +55,7 @@ export default factories.createCoreService('api::plan.plan', ({ strapi }) => ({
         };
     },
     async create(params) {
-        // some logic here
         const result = await super.create(params);
-        // some more logic
-
         return result;
     },
     async update(documentId, params) {

@@ -33,7 +33,7 @@
     },
     "value": {
       "type": "integer",
-      "required": true,
+      "required": false,
       "min": 0
     }
   }

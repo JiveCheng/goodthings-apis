@@ -20,7 +20,7 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
                 filters: {
                     plan: plan.id,
                 },
-                populate: ['metadata'],
+                populate: ['metadata', 'metadata.items'],
             });
 
             const { results: comments } = await strapi.service('api::comment.comment').find({
@@ -44,9 +44,59 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
             ctx.body = err;
         }
     },
+    async create(ctx) {
+        const data = ctx.request.body.data
+        const { type } = data
+        let taxonomyId = null
+
+        if (!!type) {
+            const term = await strapi.documents('api::term.term').findMany({
+                filters: {
+                    slug: type,
+                },
+                populate: ['taxonomy'],
+            });
+
+            if (!term.length) {
+                throw new Error('Invalid type');
+            }
+            taxonomyId = term[0].taxonomy.id
+            delete ctx.request.body.data.type
+        }
+
+        const response = await super.create(ctx);
+        
+        // 如果新增 plan 失敗，就不用新增 term relationship
+        if (!response) {
+            return response;
+        }
+
+        console.log(response)
+
+        // 新增 term relationship
+        const termRelationships = await strapi.documents('api::term-relationship.term-relationship').create({
+            data: {
+                objectType: 'plan',
+                objectId: response.data.documentId,
+                taxonomy: taxonomyId,
+            }
+        });
+
+        // 如果 term relationship 新增失敗，就刪除剛剛新增的 plan
+        if (!termRelationships) {
+            await strapi.documents('api::plan.plan').delete({
+                documentId: response.documentId
+            });
+            // 回傳新增失敗的訊息
+            return null;
+        }
+
+        return response;
+    },
     async update(ctx) {
         const data = ctx.request.body.data
         const { type } = data
+        
 
         if (!!type) {
             const extraData = {
@@ -98,9 +148,7 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
                 }
             })
         }
-        // some logic here
         const response = await super.update(ctx);
-        // some more logic
 
         return response;
     }
