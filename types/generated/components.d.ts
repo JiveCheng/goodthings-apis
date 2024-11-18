@@ -1,26 +1,37 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Schema, Struct } from '@strapi/strapi';
 
-export interface MetaPlan extends Struct.ComponentSchema {
-  collectionName: 'components_meta_plans';
+export interface BelongComment extends Struct.ComponentSchema {
+  collectionName: 'components_belong_comments';
   info: {
-    displayName: 'Plan/Execution';
-    icon: 'bulletList';
-    description: '';
+    displayName: 'Comment';
+    icon: '';
   };
   attributes: {
-    executiveUserId: Schema.Attribute.Integer &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<0>;
-    recipient: Schema.Attribute.String & Schema.Attribute.Required;
-    location: Schema.Attribute.String;
-    start: Schema.Attribute.DateTime;
-    items: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
+    comment: Schema.Attribute.Relation<'oneToOne', 'api::comment.comment'>;
+  };
+}
+
+export interface BelongExecution extends Struct.ComponentSchema {
+  collectionName: 'components_belong_executions';
+  info: {
+    description: '';
+    displayName: 'Execution';
+  };
+  attributes: {
+    execution: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::execution.execution'
     >;
-    duration: Schema.Attribute.Integer;
-    durationUnit: Schema.Attribute.Enumeration<['minutes', 'hours', 'days']>;
-    content: Schema.Attribute.JSON;
+  };
+}
+
+export interface BelongPlan extends Struct.ComponentSchema {
+  collectionName: 'components_belong_plans';
+  info: {
+    displayName: 'Plan';
+  };
+  attributes: {
+    plan: Schema.Attribute.Relation<'oneToOne', 'api::plan.plan'>;
   };
 }
 
@@ -36,49 +47,38 @@ export interface LogFieldChange extends Struct.ComponentSchema {
   };
 }
 
-export interface BelongPlan extends Struct.ComponentSchema {
-  collectionName: 'components_belong_plans';
+export interface MetaPlan extends Struct.ComponentSchema {
+  collectionName: 'components_meta_plans';
   info: {
-    displayName: 'Plan';
-  };
-  attributes: {
-    plan: Schema.Attribute.Relation<'oneToOne', 'api::plan.plan'>;
-  };
-}
-
-export interface BelongExecution extends Struct.ComponentSchema {
-  collectionName: 'components_belong_executions';
-  info: {
-    displayName: 'Execution';
     description: '';
+    displayName: 'Plan/Execution';
+    icon: 'bulletList';
   };
   attributes: {
-    execution: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::execution.execution'
+    content: Schema.Attribute.JSON;
+    duration: Schema.Attribute.Integer;
+    durationUnit: Schema.Attribute.Enumeration<['minutes', 'hours', 'days']>;
+    executiveUserId: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    items: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
     >;
-  };
-}
-
-export interface BelongComment extends Struct.ComponentSchema {
-  collectionName: 'components_belong_comments';
-  info: {
-    displayName: 'Comment';
-    icon: '';
-  };
-  attributes: {
-    comment: Schema.Attribute.Relation<'oneToOne', 'api::comment.comment'>;
+    location: Schema.Attribute.String;
+    recipient: Schema.Attribute.String & Schema.Attribute.Required;
+    start: Schema.Attribute.DateTime;
   };
 }
 
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
-      'meta.plan': MetaPlan;
-      'log.field-change': LogFieldChange;
-      'belong.plan': BelongPlan;
-      'belong.execution': BelongExecution;
       'belong.comment': BelongComment;
+      'belong.execution': BelongExecution;
+      'belong.plan': BelongPlan;
+      'log.field-change': LogFieldChange;
+      'meta.plan': MetaPlan;
     }
   }
 }
