@@ -5,9 +5,9 @@
 import { factories } from '@strapi/strapi';
 
 export default factories.createCoreService('api::plan.plan', ({ strapi }) => ({
-    async find(...args) {
+    async find(params) {
         // Calling the default core controller
-        const { results, pagination } = await super.find(...args);
+        const { results, pagination } = await super.find(params);
         const documentIds = results.map((row) => row.documentId);
         const termRelationships = await strapi.documents('api::term-relationship.term-relationship').findMany({
             filters: {

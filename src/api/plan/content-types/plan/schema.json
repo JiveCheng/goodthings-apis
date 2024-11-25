@@ -44,6 +44,16 @@
     "content": {
       "type": "json",
       "required": true
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "review",
+        "published"
+      ],
+      "required": true,
+      "default": "draft"
     }
   }
 }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-18T02:37:16.807Z"
+    "x-generation-date": "2024-11-25T06:29:25.609Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -6288,6 +6288,14 @@
                 "type": "string"
               },
               "content": {},
+              "state": {
+                "type": "string",
+                "enum": [
+                  "draft",
+                  "review",
+                  "published"
+                ]
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -6828,6 +6836,14 @@
                 "type": "string"
               },
               "content": {},
+              "state": {
+                "type": "string",
+                "enum": [
+                  "draft",
+                  "review",
+                  "published"
+                ]
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -7366,6 +7382,14 @@
                 "type": "string"
               },
               "content": {},
+              "state": {
+                "type": "string",
+                "enum": [
+                  "draft",
+                  "review",
+                  "published"
+                ]
+              },
               "createdAt": {
                 "type": "string",
                 "format": "date-time"
@@ -7678,7 +7702,8 @@
               "ownerId",
               "maxTrigger",
               "excerpt",
-              "content"
+              "content",
+              "state"
             ],
             "type": "object",
             "properties": {
@@ -7712,6 +7737,14 @@
                 "type": "string"
               },
               "content": {},
+              "state": {
+                "type": "string",
+                "enum": [
+                  "draft",
+                  "review",
+                  "published"
+                ]
+              },
               "locale": {
                 "type": "string"
               },
@@ -7775,7 +7808,8 @@
           "ownerId",
           "maxTrigger",
           "excerpt",
-          "content"
+          "content",
+          "state"
         ],
         "properties": {
           "id": {
@@ -7846,6 +7880,14 @@
                       "type": "string"
                     },
                     "content": {},
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "draft",
+                        "review",
+                        "published"
+                      ]
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -7972,6 +8014,14 @@
             "type": "string"
           },
           "content": {},
+          "state": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "review",
+              "published"
+            ]
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
