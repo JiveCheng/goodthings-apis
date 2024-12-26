@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_meta_wishes",
+  "info": {
+    "displayName": "Wish",
+    "icon": "crown"
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "content": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

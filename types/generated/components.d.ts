@@ -51,7 +51,7 @@ export interface MetaPlan extends Struct.ComponentSchema {
   collectionName: 'components_meta_plans';
   info: {
     description: '';
-    displayName: 'Plan/Execution';
+    displayName: 'Plan|Execution';
     icon: 'bulletList';
   };
   attributes: {
@@ -71,6 +71,21 @@ export interface MetaPlan extends Struct.ComponentSchema {
   };
 }
 
+export interface MetaWish extends Struct.ComponentSchema {
+  collectionName: 'components_meta_wishes';
+  info: {
+    displayName: 'Wish';
+    icon: 'crown';
+  };
+  attributes: {
+    content: Schema.Attribute.JSON & Schema.Attribute.Required;
+    media: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -79,6 +94,7 @@ declare module '@strapi/strapi' {
       'belong.plan': BelongPlan;
       'log.field-change': LogFieldChange;
       'meta.plan': MetaPlan;
+      'meta.wish': MetaWish;
     }
   }
 }

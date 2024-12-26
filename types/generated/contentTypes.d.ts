@@ -393,7 +393,7 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Log: Schema.Attribute.Component<'log.field-change', true>;
     objectId: Schema.Attribute.String & Schema.Attribute.Required;
-    objectType: Schema.Attribute.Enumeration<['plan', 'execution']> &
+    objectType: Schema.Attribute.Enumeration<['plan', 'execution', 'wish']> &
       Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -657,6 +657,37 @@ export interface ApiTermTerm extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
     taxonomy: Schema.Attribute.Relation<'oneToOne', 'api::taxonomy.taxonomy'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiWishWish extends Struct.CollectionTypeSchema {
+  collectionName: 'wishes';
+  info: {
+    description: '';
+    displayName: 'Wish';
+    pluralName: 'wishes';
+    singularName: 'wish';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::wish.wish'> &
+      Schema.Attribute.Private;
+    metadata: Schema.Attribute.Component<'meta.wish', false>;
+    ownerId: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    state: Schema.Attribute.Enumeration<
+      ['draft', 'infundraising', 'evaluation', 'onsale']
+    >;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1181,6 +1212,7 @@ declare module '@strapi/strapi' {
       'api::taxonomy.taxonomy': ApiTaxonomyTaxonomy;
       'api::term-relationship.term-relationship': ApiTermRelationshipTermRelationship;
       'api::term.term': ApiTermTerm;
+      'api::wish.wish': ApiWishWish;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

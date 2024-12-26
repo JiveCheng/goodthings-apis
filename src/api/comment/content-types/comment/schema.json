@@ -25,7 +25,8 @@
       "type": "enumeration",
       "enum": [
         "plan",
-        "execution"
+        "execution",
+        "wish"
       ],
       "required": true
     },

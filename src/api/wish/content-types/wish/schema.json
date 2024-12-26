@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wishes",
+  "info": {
+    "singularName": "wish",
+    "pluralName": "wishes",
+    "displayName": "Wish",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "ownerId": {
+      "type": "biginteger",
+      "required": true
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "infundraising",
+        "evaluation",
+        "onsale"
+      ]
+    },
+    "metadata": {
+      "type": "component",
+      "repeatable": false,
+      "component": "meta.wish"
+    }
+  }
+}
