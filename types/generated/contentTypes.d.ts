@@ -561,6 +561,37 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSubscriptionSubscription
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'subscriptions';
+  info: {
+    displayName: 'Subscription';
+    pluralName: 'subscriptions';
+    singularName: 'subscription';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscription.subscription'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    resource: Schema.Attribute.DynamicZone<['belong.plan', 'belong.execution']>;
+    state: Schema.Attribute.Boolean;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer;
+  };
+}
+
 export interface ApiTaxonomyTaxonomy extends Struct.CollectionTypeSchema {
   collectionName: 'taxonomies';
   info: {
@@ -1209,6 +1240,7 @@ declare module '@strapi/strapi' {
       'api::execution-accumulator.execution-accumulator': ApiExecutionAccumulatorExecutionAccumulator;
       'api::execution.execution': ApiExecutionExecution;
       'api::plan.plan': ApiPlanPlan;
+      'api::subscription.subscription': ApiSubscriptionSubscription;
       'api::taxonomy.taxonomy': ApiTaxonomyTaxonomy;
       'api::term-relationship.term-relationship': ApiTermRelationshipTermRelationship;
       'api::term.term': ApiTermTerm;

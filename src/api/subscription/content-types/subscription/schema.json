@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userId": {
+      "type": "integer"
+    },
+    "state": {
+      "type": "boolean"
+    },
+    "resource": {
+      "type": "dynamiczone",
+      "components": [
+        "belong.plan",
+        "belong.execution"
+      ]
+    }
+  }
+}
