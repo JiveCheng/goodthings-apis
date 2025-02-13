@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-02-12T08:25:51.522Z"
+    "x-generation-date": "2025-02-13T05:00:23.086Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -9108,6 +9108,9 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "throughBy"
+            ],
             "type": "object",
             "properties": {
               "userId": {
@@ -9135,6 +9138,13 @@
                     "belong.execution": "#/components/schemas/BelongExecutionComponent"
                   }
                 }
+              },
+              "throughBy": {
+                "type": "string",
+                "enum": [
+                  "order",
+                  "plan"
+                ]
               },
               "locale": {
                 "type": "string"
@@ -9194,6 +9204,9 @@
       },
       "Subscription": {
         "type": "object",
+        "required": [
+          "throughBy"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -9226,6 +9239,13 @@
                 "belong.execution": "#/components/schemas/BelongExecutionComponent"
               }
             }
+          },
+          "throughBy": {
+            "type": "string",
+            "enum": [
+              "order",
+              "plan"
+            ]
           },
           "createdAt": {
             "type": "string",
@@ -9300,6 +9320,13 @@
                       "belong.execution": "#/components/schemas/BelongExecutionComponent"
                     }
                   }
+                },
+                "throughBy": {
+                  "type": "string",
+                  "enum": [
+                    "order",
+                    "plan"
+                  ]
                 },
                 "createdAt": {
                   "type": "string",

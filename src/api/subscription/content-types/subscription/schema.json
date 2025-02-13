@@ -23,6 +23,15 @@
         "belong.plan",
         "belong.execution"
       ]
+    },
+    "throughBy": {
+      "type": "enumeration",
+      "enum": [
+        "order",
+        "plan"
+      ],
+      "required": true,
+      "default": "plan"
     }
   }
 }

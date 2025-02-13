@@ -585,6 +585,9 @@ export interface ApiSubscriptionSubscription
     publishedAt: Schema.Attribute.DateTime;
     resource: Schema.Attribute.DynamicZone<['belong.plan', 'belong.execution']>;
     state: Schema.Attribute.Boolean;
+    throughBy: Schema.Attribute.Enumeration<['order', 'plan']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'plan'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
