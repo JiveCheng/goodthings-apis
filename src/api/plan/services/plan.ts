@@ -22,11 +22,16 @@ export default factories.createCoreService('api::plan.plan', ({ strapi }) => ({
         const output = await Promise.all(results.map(async (row) => {
             const { documentId } = row;
             const termRelationship = termRelationships.find((termRelationship) => termRelationship.objectId === documentId);
+            const subscribedCount = await strapi.documents('api::subscription.subscription').count({ filters: {
+                objectId: documentId,
+                objectType: 'plan'
+            }})
             return {
                 ...row,
                 type: termRelationship?.taxonomy?.term?.label || '',
-                trigger_count: 0,
-                execution_count: 0,
+                subscribedCount,
+                triggerCount: 0,
+                executionCount: 0,
             };
         }))
         return {

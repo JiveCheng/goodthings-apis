@@ -3,7 +3,6 @@
  */
 
 import { factories } from '@strapi/strapi'
-import { filter } from '../../../../config/middlewares';
 
 export default factories.createCoreController('api::plan.plan', ({ strapi }) => ({
     async getActivities(ctx) {

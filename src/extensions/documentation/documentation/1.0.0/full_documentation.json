@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-02-13T05:00:23.086Z"
+    "x-generation-date": "2025-02-17T05:19:41.230Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -9109,7 +9109,8 @@
         "properties": {
           "data": {
             "required": [
-              "throughBy"
+              "objectType",
+              "objectId"
             ],
             "type": "object",
             "properties": {
@@ -9119,32 +9120,15 @@
               "state": {
                 "type": "boolean"
               },
-              "resource": {
-                "type": "array",
-                "items": {
-                  "anyOf": [
-                    {
-                      "$ref": "#/components/schemas/BelongPlanComponent"
-                    },
-                    {
-                      "$ref": "#/components/schemas/BelongExecutionComponent"
-                    }
-                  ]
-                },
-                "discriminator": {
-                  "propertyName": "__component",
-                  "mapping": {
-                    "belong.plan": "#/components/schemas/BelongPlanComponent",
-                    "belong.execution": "#/components/schemas/BelongExecutionComponent"
-                  }
-                }
-              },
-              "throughBy": {
+              "objectType": {
                 "type": "string",
                 "enum": [
-                  "order",
-                  "plan"
+                  "plan",
+                  "wish"
                 ]
+              },
+              "objectId": {
+                "type": "string"
               },
               "locale": {
                 "type": "string"
@@ -9205,7 +9189,8 @@
       "Subscription": {
         "type": "object",
         "required": [
-          "throughBy"
+          "objectType",
+          "objectId"
         ],
         "properties": {
           "id": {
@@ -9220,32 +9205,15 @@
           "state": {
             "type": "boolean"
           },
-          "resource": {
-            "type": "array",
-            "items": {
-              "anyOf": [
-                {
-                  "$ref": "#/components/schemas/BelongPlanComponent"
-                },
-                {
-                  "$ref": "#/components/schemas/BelongExecutionComponent"
-                }
-              ]
-            },
-            "discriminator": {
-              "propertyName": "__component",
-              "mapping": {
-                "belong.plan": "#/components/schemas/BelongPlanComponent",
-                "belong.execution": "#/components/schemas/BelongExecutionComponent"
-              }
-            }
-          },
-          "throughBy": {
+          "objectType": {
             "type": "string",
             "enum": [
-              "order",
-              "plan"
+              "plan",
+              "wish"
             ]
+          },
+          "objectId": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -9267,6 +9235,258 @@
               },
               "documentId": {
                 "type": "string"
+              },
+              "firstname": {
+                "type": "string"
+              },
+              "lastname": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "registrationToken": {
+                "type": "string"
+              },
+              "isActive": {
+                "type": "boolean"
+              },
+              "roles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "permissions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          },
+                          "action": {
+                            "type": "string"
+                          },
+                          "actionParameters": {},
+                          "subject": {
+                            "type": "string"
+                          },
+                          "properties": {},
+                          "conditions": {},
+                          "role": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "publishedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "createdBy": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "updatedBy": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "documentId": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "locale": {
+                            "type": "string"
+                          },
+                          "localizations": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "documentId": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "publishedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "createdBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "updatedBy": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "documentId": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "locale": {
+                      "type": "string"
+                    },
+                    "localizations": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "documentId": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "preferedLanguage": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "publishedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "createdBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "updatedBy": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "documentId": {
+                    "type": "string"
+                  }
+                }
+              },
+              "locale": {
+                "type": "string"
+              },
+              "localizations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "documentId": {
+                      "type": "string"
+                    }
+                  }
+                }
               }
             }
           },
@@ -9301,32 +9521,15 @@
                 "state": {
                   "type": "boolean"
                 },
-                "resource": {
-                  "type": "array",
-                  "items": {
-                    "anyOf": [
-                      {
-                        "$ref": "#/components/schemas/BelongPlanComponent"
-                      },
-                      {
-                        "$ref": "#/components/schemas/BelongExecutionComponent"
-                      }
-                    ]
-                  },
-                  "discriminator": {
-                    "propertyName": "__component",
-                    "mapping": {
-                      "belong.plan": "#/components/schemas/BelongPlanComponent",
-                      "belong.execution": "#/components/schemas/BelongExecutionComponent"
-                    }
-                  }
-                },
-                "throughBy": {
+                "objectType": {
                   "type": "string",
                   "enum": [
-                    "order",
-                    "plan"
+                    "plan",
+                    "wish"
                   ]
+                },
+                "objectId": {
+                  "type": "string"
                 },
                 "createdAt": {
                   "type": "string",
@@ -9392,56 +9595,6 @@
           },
           "meta": {
             "type": "object"
-          }
-        }
-      },
-      "BelongPlanComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "belong.plan"
-            ]
-          },
-          "plan": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
-      "BelongExecutionComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "belong.execution"
-            ]
-          },
-          "execution": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
           }
         }
       },

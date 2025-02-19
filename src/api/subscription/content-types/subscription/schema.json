@@ -4,7 +4,8 @@
   "info": {
     "singularName": "subscription",
     "pluralName": "subscriptions",
-    "displayName": "Subscription"
+    "displayName": "Subscription",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -17,21 +18,18 @@
     "state": {
       "type": "boolean"
     },
-    "resource": {
-      "type": "dynamiczone",
-      "components": [
-        "belong.plan",
-        "belong.execution"
-      ]
-    },
-    "throughBy": {
+    "objectType": {
       "type": "enumeration",
       "enum": [
-        "order",
-        "plan"
+        "plan",
+        "wish"
       ],
+      "required": true
+    },
+    "objectId": {
+      "type": "string",
       "required": true,
-      "default": "plan"
+      "unique": false
     }
   }
 }

@@ -565,6 +565,7 @@ export interface ApiSubscriptionSubscription
   extends Struct.CollectionTypeSchema {
   collectionName: 'subscriptions';
   info: {
+    description: '';
     displayName: 'Subscription';
     pluralName: 'subscriptions';
     singularName: 'subscription';
@@ -582,12 +583,11 @@ export interface ApiSubscriptionSubscription
       'api::subscription.subscription'
     > &
       Schema.Attribute.Private;
+    objectId: Schema.Attribute.String & Schema.Attribute.Required;
+    objectType: Schema.Attribute.Enumeration<['plan', 'wish']> &
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    resource: Schema.Attribute.DynamicZone<['belong.plan', 'belong.execution']>;
     state: Schema.Attribute.Boolean;
-    throughBy: Schema.Attribute.Enumeration<['order', 'plan']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'plan'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
