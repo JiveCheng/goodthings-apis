@@ -49,6 +49,13 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
      */
     async random(ctx) {
         try {
+            const query = await this.sanitizeQuery(ctx);
+            // 取得 query 的 filters，並將其轉換為 strapi 的 filters 格式
+            const filters = query?.filters as { [key: string]: any };
+            const pagination = query?.pagination as { [key: string]: any };
+            let limit = parseInt(pagination?.pageSize) || 1;
+            let offsetStart = parseInt(pagination?.page) * limit || 0;
+
             // 使用 count 來取得有 condition-mets 的 plan 的數量，condition_mets 是一個 plan下的欄位並 Plan belongs to many ConditionsMets
             const count = await strapi.documents('api::plan.plan').count({
                 filters: {
@@ -61,22 +68,27 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
             });
             // 使用 count 來取得一個隨機數字
             const random = Math.floor(Math.random() * count);
+            if (!pagination || !pagination?.page) {
+                offsetStart = random;
+            }
             // 使用 random 來取得一個有 condition-mets 的 plan
-            const plan = await strapi.documents('api::plan.plan').findFirst({
+            const plan = await strapi.documents('api::plan.plan').findMany({
                 filters: {
                     conditions_mets: {
                         id: {
                             $ne: null
                         }
-                    }
+                    },
+                    ...filters
                 },
+                status: 'published',
                 populate: ['conditions_mets', 'metadata', 'metadata.items'],
-                start: random,
-                limit: 1
+                start: offsetStart,
+                limit
             });
 
             return {
-                data: plan, meta: {}
+                data: limit === 1 ? plan[0] : plan, meta: {}
             };
         } catch (err) {
             ctx.body = err;
