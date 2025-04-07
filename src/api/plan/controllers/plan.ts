@@ -54,7 +54,7 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
             const filters = query?.filters as { [key: string]: any };
             const pagination = query?.pagination as { [key: string]: any };
             let limit = parseInt(pagination?.pageSize) || 1;
-            let offsetStart = parseInt(pagination?.page) * limit || 0;
+            let offsetStart = parseInt(pagination?.page ? pagination?.page : 0) * limit || 0;
 
             // 使用 count 來取得有 condition-mets 的 plan 的數量，condition_mets 是一個 plan下的欄位並 Plan belongs to many ConditionsMets
             const count = await strapi.documents('api::plan.plan').count({
@@ -68,11 +68,11 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
             });
             // 使用 count 來取得一個隨機數字
             const random = Math.floor(Math.random() * count);
-            if (!pagination || !pagination?.page) {
+            if (!pagination?.page && !pagination?.pageSize) {
                 offsetStart = random;
             }
             // 使用 random 來取得一個有 condition-mets 的 plan
-            const plan = await strapi.documents('api::plan.plan').findMany({
+            const plans = await strapi.documents('api::plan.plan').findMany({
                 filters: {
                     conditions_mets: {
                         id: {
@@ -88,7 +88,7 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
             });
 
             return {
-                data: limit === 1 ? plan[0] : plan, meta: {}
+                data: plans, meta: {}
             };
         } catch (err) {
             ctx.body = err;
