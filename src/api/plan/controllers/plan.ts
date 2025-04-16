@@ -59,12 +59,9 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
             // 使用 count 來取得有 condition-mets 的 plan 的數量，condition_mets 是一個 plan下的欄位並 Plan belongs to many ConditionsMets
             const count = await strapi.documents('api::plan.plan').count({
                 filters: {
-                    conditions_mets: {
-                        id: {
-                            $ne: null
-                        }
-                    }
-                }
+                    ...filters
+                },
+                status: 'published'
             });
             // 使用 count 來取得一個隨機數字
             const random = Math.floor(Math.random() * count);
@@ -74,11 +71,6 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
             // 使用 random 來取得一個有 condition-mets 的 plan
             const plans = await strapi.documents('api::plan.plan').findMany({
                 filters: {
-                    conditions_mets: {
-                        id: {
-                            $ne: null
-                        }
-                    },
                     ...filters
                 },
                 status: 'published',
