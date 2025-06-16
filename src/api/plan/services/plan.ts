@@ -40,6 +40,10 @@ export default factories.createCoreService('api::plan.plan', ({ strapi }) => ({
     },
     async findOne(...args) {
         const document = await super.findOne(...args);
+        // if document is not found, return null
+        if (!document) {
+            return null;
+        }
         const { documentId } = document;
         const termRelationships = await strapi.documents('api::term-relationship.term-relationship').findMany({
             filters: {
