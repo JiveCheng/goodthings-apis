@@ -22,12 +22,16 @@ export default factories.createCoreController('api::plan.plan', ({ strapi }) => 
                 populate: ['metadata', 'metadata.items'],
             });
 
+            const comments = [];
+            /**
+             * 2025-12-26 暫時先註解掉 comment 的部分，等有需要再打開
             const { results: comments } = await strapi.service('api::comment.comment').find({
                 filters: {
                     objectId: planId,
                 },
                 populate: ['Log'],
             });
+             */
 
             const results = [
                 ...executions,
