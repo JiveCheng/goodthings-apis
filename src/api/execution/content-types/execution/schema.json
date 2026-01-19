@@ -44,6 +44,26 @@
     "userId": {
       "type": "integer",
       "required": true
+    },
+    "sumAccumulators": {
+      "min": 0,
+      "type": "integer"
+    },
+    "calcBy": {
+      "type": "enumeration",
+      "enum": [
+        "manual",
+        "order_price",
+        "order_quantity"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 2
+    },
+    "accumulatorExpectation": {
+      "type": "integer",
+      "min": 0
     }
   }
 }

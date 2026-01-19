@@ -491,6 +491,16 @@ export interface ApiExecutionExecution extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    accumulatorExpectation: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    calcBy: Schema.Attribute.Enumeration<
+      ['manual', 'order_price', 'order_quantity']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -512,6 +522,17 @@ export interface ApiExecutionExecution extends Struct.CollectionTypeSchema {
       ['accumulating', 'pending', 'processing', 'done', 'suspend', 'cancelled']
     > &
       Schema.Attribute.Required;
+    sumAccumulators: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    title: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -543,6 +564,10 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::plan.plan'> &
       Schema.Attribute.Private;
+    main_execution: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::execution.execution'
+    >;
     maxTrigger: Schema.Attribute.Integer &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<0>;

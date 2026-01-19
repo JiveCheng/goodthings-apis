@@ -54,6 +54,11 @@
       ],
       "required": true,
       "default": "draft"
+    },
+    "main_execution": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::execution.execution"
     }
   }
 }

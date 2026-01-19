@@ -49,6 +49,10 @@
     },
     "content": {
       "type": "json"
+    },
+    "calcUnit": {
+      "type": "string",
+      "maxLength": 4
     }
   }
 }

@@ -55,6 +55,10 @@ export interface MetaPlan extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
+    calcUnit: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 4;
+      }>;
     content: Schema.Attribute.JSON;
     duration: Schema.Attribute.Integer;
     durationUnit: Schema.Attribute.Enumeration<['minutes', 'hours', 'days']>;
