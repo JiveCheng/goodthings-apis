@@ -449,6 +449,7 @@ export interface ApiExecutionAccumulatorExecutionAccumulator
   extends Struct.CollectionTypeSchema {
   collectionName: 'execution_accumulators';
   info: {
+    description: '';
     displayName: 'ExecutionAccumulator';
     pluralName: 'execution-accumulators';
     singularName: 'execution-accumulator';
@@ -457,6 +458,15 @@ export interface ApiExecutionAccumulatorExecutionAccumulator
     draftAndPublish: false;
   };
   attributes: {
+    accValue: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
+    calcBy: Schema.Attribute.Enumeration<['order_price', 'order_quantity']> &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -464,6 +474,7 @@ export interface ApiExecutionAccumulatorExecutionAccumulator
       'manyToOne',
       'api::execution.execution'
     >;
+    itemId: Schema.Attribute.Integer & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -472,6 +483,7 @@ export interface ApiExecutionAccumulatorExecutionAccumulator
       Schema.Attribute.Private;
     orderId: Schema.Attribute.Integer & Schema.Attribute.Required;
     plan: Schema.Attribute.Relation<'oneToOne', 'api::plan.plan'>;
+    productId: Schema.Attribute.Integer & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

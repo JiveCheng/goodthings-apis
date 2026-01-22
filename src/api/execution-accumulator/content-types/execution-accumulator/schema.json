@@ -4,7 +4,8 @@
   "info": {
     "singularName": "execution-accumulator",
     "pluralName": "execution-accumulators",
-    "displayName": "ExecutionAccumulator"
+    "displayName": "ExecutionAccumulator",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -25,6 +26,27 @@
       "relation": "manyToOne",
       "target": "api::execution.execution",
       "inversedBy": "execution_accumulators"
+    },
+    "itemId": {
+      "type": "integer",
+      "required": true
+    },
+    "productId": {
+      "type": "integer",
+      "required": true
+    },
+    "calcBy": {
+      "type": "enumeration",
+      "enum": [
+        "order_price",
+        "order_quantity"
+      ],
+      "required": true
+    },
+    "accValue": {
+      "type": "integer",
+      "required": false,
+      "min": 0
     }
   }
 }
